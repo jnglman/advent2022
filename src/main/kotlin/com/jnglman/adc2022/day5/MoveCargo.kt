@@ -1,6 +1,25 @@
 package com.jnglman.adc2022.day5
 
-fun moveCargo(): String {
+typealias Storage = Map<Int, MutableList<Char>>
+typealias Operation = (Storage, Move) -> Unit
+
+object Constants {
+    val v9001: Operation = { cargo, move ->
+        val movers = ArrayDeque<Char>()
+        repeat(move.count) {
+            movers.addFirst(cargo[move.from]!!.removeLast())
+        }
+        cargo[move.to]!!.addAll(movers.asIterable())
+    }
+    val v9000: Operation =
+        { cargo, move ->
+            repeat(move.count) {
+                cargo[move.to]!!.add(cargo[move.from]!!.removeLast())
+            }
+        }
+}
+
+fun moveCargo(operation: Operation): String {
     """
         [V]     [B]                     [C]
         [C]     [N] [G]         [W]     [P]
@@ -30,25 +49,11 @@ fun moveCargo(): String {
         .map { Move.parse(it) }
     moves.forEachIndexed { index, move ->
         try {
-            repeat(move.count) { cargoMap[move.to]!!.add(cargoMap[move.from]!!.removeLast()) }
+            operation.invoke(cargoMap, move)
         } catch (e: NoSuchElementException) {
             println("Failed at move ${index + 1}, $move")
             throw e
         }
     }
     return cargoMap.values.map { it.last() }.joinToString(separator = "")
-}
-
-data class Move(val count: Int, val from: Int, val to: Int) {
-
-    companion object Parser {
-        private val regex = "\\d+".toRegex()
-        fun parse(description: String): Move {
-            val placeholders = regex.findAll(description)
-                .map { it.value.toInt() }
-                .toList()
-            return Move(placeholders[0], placeholders[1], placeholders[2])
-        }
-    }
-
 }

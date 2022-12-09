@@ -6,6 +6,7 @@ import com.jnglman.adc2022.day3.sumPriorities
 import com.jnglman.adc2022.day3.sumPrioritiesByGroupOf3
 import com.jnglman.adc2022.day4.findFullOverlaps
 import com.jnglman.adc2022.day4.findOverlaps
+import com.jnglman.adc2022.day5.Constants
 import com.jnglman.adc2022.day5.moveCargo
 
 fun main() {
@@ -21,5 +22,6 @@ fun main() {
     println("There are ${findFullOverlaps()} full overlaps in tasks")
     println("There are ${findOverlaps()} overlaps in tasks")
     println()
-    println("The top cargos are: ${moveCargo()}")
+    println("The top cargos are: ${moveCargo(Constants.v9000)}")
+    println("The top cargos with new crane version are: ${moveCargo(Constants.v9001)}")
 }
