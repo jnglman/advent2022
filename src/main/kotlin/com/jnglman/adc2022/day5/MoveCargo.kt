@@ -45,7 +45,7 @@ fun moveCargo(operation: Operation): String {
     )
 
     val moves = Move::class.java.getResource("input")!!.readText()
-        .split(System.lineSeparator())
+        .lines()
         .map { Move.parse(it) }
     moves.forEachIndexed { index, move ->
         try {

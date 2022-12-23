@@ -8,6 +8,8 @@ import com.jnglman.adc2022.day4.findFullOverlaps
 import com.jnglman.adc2022.day4.findOverlaps
 import com.jnglman.adc2022.day5.Constants
 import com.jnglman.adc2022.day5.moveCargo
+import com.jnglman.adc2022.day6.scanStartMessage
+import com.jnglman.adc2022.day6.scanStartPacket
 
 fun main() {
     println("Elf carrying max calories carries ${findMaxCalories()}")
@@ -24,4 +26,7 @@ fun main() {
     println()
     println("The top cargos are: ${moveCargo(Constants.v9000)}")
     println("The top cargos with new crane version are: ${moveCargo(Constants.v9001)}")
+    println()
+    println("Signal start indicated by ${scanStartPacket()} symbol")
+    println("Message start indicated by ${scanStartMessage()} symbol")
 }

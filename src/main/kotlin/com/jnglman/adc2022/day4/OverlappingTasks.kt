@@ -4,7 +4,7 @@ class Test
 
 fun findFullOverlaps(): Int {
     return Test::class.java.getResource("input")!!.readText()
-        .split(System.lineSeparator())
+        .lines()
         .map { parseRangesLine(it) }
         .map { it.second.isFullOverlap(it.first) || it.first.isFullOverlap(it.second) }
         .count { it }
@@ -12,7 +12,7 @@ fun findFullOverlaps(): Int {
 
 fun findOverlaps(): Int {
     return Test::class.java.getResource("input")!!.readText()
-        .split(System.lineSeparator())
+        .lines()
         .map { parseRangesLine(it) }
         .map { it.second.isOverlap(it.first) }
         .count { it }

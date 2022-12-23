@@ -2,7 +2,7 @@ package com.jnglman.adc2022.day2
 
 fun calculateScore(): Int {
     return Figure::class.java.getResource("input")!!.readText()
-        .split(System.lineSeparator())
+        .lines()
         .sumOf {
             val figures = it.split(" ")
             if (figures.size != 2) {
@@ -16,7 +16,7 @@ fun calculateScore(): Int {
 
 fun calculateRiggedScore(): Int {
     return Figure::class.java.getResource("input")!!.readText()
-        .split(System.lineSeparator())
+        .lines()
         .sumOf {
             val figures = it.split(" ")
             if (figures.size != 2) {

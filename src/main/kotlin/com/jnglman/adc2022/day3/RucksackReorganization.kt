@@ -25,14 +25,14 @@ class Rucksack(content: String) {
 
 fun sumPriorities(): Int {
         return Rucksack::class.java.getResource("input")!!.readText()
-            .split(System.lineSeparator())
+            .lines()
             .map { Rucksack(it) }
             .sumOf { it.calculatePriority() }
 }
 
 fun sumPrioritiesByGroupOf3(): Int {
     return Rucksack::class.java.getResource("input")!!.readText()
-        .split(System.lineSeparator())
+        .lines()
         .map { Rucksack(it) }
         .chunked(3)
         .map { it.map { r -> r.content() }.reduce { chars2, chars -> chars.intersect(chars2) } }
