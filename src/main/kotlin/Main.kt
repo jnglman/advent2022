@@ -10,6 +10,8 @@ import com.jnglman.adc2022.day5.Constants
 import com.jnglman.adc2022.day5.moveCargo
 import com.jnglman.adc2022.day6.scanStartMessage
 import com.jnglman.adc2022.day6.scanStartPacket
+import com.jnglman.adc2022.day7.freeSpace
+import com.jnglman.adc2022.day7.sumSizeOfLessThan100000
 
 fun main() {
     println("Elf carrying max calories carries ${findMaxCalories()}")
@@ -29,4 +31,8 @@ fun main() {
     println()
     println("Signal start indicated by ${scanStartPacket()} symbol")
     println("Message start indicated by ${scanStartMessage()} symbol")
+    println()
+    println("Summary size of directories with size < 100000 =  ${sumSizeOfLessThan100000()}")
+    println("Directory to delete ${sumSizeOfLessThan100000()}")
+    println("We need to free ${freeSpace()} to apply update")
 }
